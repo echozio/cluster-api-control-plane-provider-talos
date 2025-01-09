@@ -246,10 +246,6 @@ func (r *TalosControlPlaneReconciler) auditEtcd(ctx context.Context, tcp *contro
 
 		if !present {
 			r.Log.Info("found etcd member that doesn't exist as controlplane machine", "member", member)
-
-			if err = r.forceEtcdLeave(ctx, c, member); err != nil {
-				return fmt.Errorf("error leaving etcd for member %q via machine %q", member, designatedCPMachine.Name)
-			}
 		}
 	}
 
